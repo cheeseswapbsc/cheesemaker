@@ -58,7 +58,7 @@ const ScrollButtonContainer = styled.div`
 `
 
 const FarmTable: React.FC<ITableProps> = (props) => {
-  const tableWrapperEl = useRef<BNBMLDivElement>(null)
+  const tableWrapperEl = useRef<HTMLDivElement>(null)
   const TranslateString = useI18n()
   const { data, columns } = props
 

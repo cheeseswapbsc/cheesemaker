@@ -235,7 +235,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
          [htPrice, farmsLP, query, cnftPrice, ethPriceUsd],
        )
 
-       const handleChangeQuery = (event: React.ChangeEvent<BNBMLInputElement>) => {
+       const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
          setQuery(event.target.value)
        }
 

@@ -7,7 +7,7 @@ interface TokenInputProps extends InputProps {
   symbol: string
   value: string
   onSelectMax?: () => void
-  onChange: (evt: React.FormEvent<BNBMLInputElement>) => void
+  onChange: (evt: React.FormEvent<HTMLInputElement>) => void
 }
 
 const TokenInput: React.FC<TokenInputProps> = ({ max, symbol, onChange, onSelectMax, value }) => {

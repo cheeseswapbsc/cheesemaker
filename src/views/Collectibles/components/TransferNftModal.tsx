@@ -75,7 +75,7 @@ const TransferNftModal: React.FC<TransferNftModalProps> = ({ nft, tokenIds, onSu
     }
   }
 
-  const handleChange = (evt: React.ChangeEvent<BNBMLInputElement>) => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value: inputValue } = evt.target
     setValue(inputValue)
   }

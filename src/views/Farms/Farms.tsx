@@ -15,7 +15,6 @@ import { QuoteToken } from 'config/constants/types'
 import useI18n from 'hooks/useI18n'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { orderBy } from 'lodash'
-
 import FarmCard, { FarmWithStakedValue } from './components/FarmCard/FarmCard'
 import Table from './components/FarmTable/FarmTable'
 import FarmTabButtons from './components/FarmTabButtons'
@@ -237,7 +236,7 @@ const Farms: React.FC<FarmsProps> = () => {
          [htPrice, farmsLP, query, cnftPrice, ethPriceUsd],
        )
 
-       const handleChangeQuery = (event: React.ChangeEvent<BNBMLInputElement>) => {
+       const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
          setQuery(event.target.value)
        }
 
@@ -362,17 +361,20 @@ const Farms: React.FC<FarmsProps> = () => {
   }
 
   return (
-    <>
-      <Header>
-        <Heading as="h1" size="xxl" color="secondary" mb="24px">
+  <Page>
+      <Hero>
+      <div>
+        <Heading as="h1" size="xxl" color="#fff" mb="24px">
           {TranslateString(999, 'Farms')}
         </Heading>
-        <Heading size="lg" color="text">
-          {TranslateString(999, 'Stake Liquidity Pool (LP) tokens to earn.')}
+        <Heading size="lg" color="#fff">
+          {TranslateString(999, 'Deposit & Stake Liquidity Pool Token (Cheese-LP) tokens to earn.')}
         </Heading>
-      </Header>
-      <Page>
-        <ControlContainer>
+        </div>
+        <img src="/images/piggy-cnft-golden.svg" alt="CheeseMaker Smart Pool icon" width={410} height={191} />
+      </Hero>
+
+      <ControlContainer>
           <ViewControls>
             <ToggleView viewMode={viewMode} onToggle={(mode: ViewMode) => setViewMode(mode)} />
             <ToggleWrapper>
@@ -423,8 +425,37 @@ const Farms: React.FC<FarmsProps> = () => {
         {renderContent()}
         <StyledImage src="/images/cnft-bg.svg" alt="CheeseMaker" width={120} height={103} />
       </Page>
-    </>
-  )
+    )
 }
+
+const Hero = styled.div`
+  align-items: center;
+  color: ${({ theme }) => theme.colors.primary};
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: 1fr;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 250px;
+  padding: 48px 0;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 16px;
+    li {
+      margin-bottom: 4px;
+    }
+  }
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+  @media (min-width: 576px) {
+    grid-template-columns: 1fr 1fr;
+    margin: 0;
+    max-width: none;
+  }
+`
 
 export default Farms

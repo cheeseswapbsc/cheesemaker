@@ -29,7 +29,7 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({
   }, [max, stakingTokenDecimals])
 
   const handleChange = useCallback(
-    (e: React.FormEvent<BNBMLInputElement>) => {
+    (e: React.FormEvent<HTMLInputElement>) => {
       setVal(e.currentTarget.value)
     },
     [setVal],

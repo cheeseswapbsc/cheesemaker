@@ -36,16 +36,16 @@ const Farm: React.FC = () => {
     <Page>
       <Hero>
         <div>
-          <Heading as="h1" size="xxl" mb="16px">
-            {TranslateString(738, 'Cnft Pool')}
+          <Heading as="h1" size="xxl" mb="16px" color="#fff">
+            {TranslateString(738, 'CNFT Staking Pool')}
           </Heading>
           <ul>
-            <li>{TranslateString(580, 'Stake CNFT to earn new tokens.')}</li>
+            <li color="#fff">{TranslateString(580, 'Stake CNFT to earn new tokens.')}</li>
             <li>{TranslateString(486, 'You can unstake at any time.')}</li>
             <li>{TranslateString(406, 'Rewards are calculated per block.')}</li>
           </ul>
         </div>
-        <img src="/images/cnft-bg2.svg" alt="Smart Pool icon" width={410} height={191} />
+        <img src="/images/piggy-cnft-golden.svg" alt="CheeseMaker Smart Pool icon" width={410} height={191} />
       </Hero>
       <PoolTabButtons stackedOnly={stackedOnly} setStackedOnly={setStackedOnly} />
       <Divider />

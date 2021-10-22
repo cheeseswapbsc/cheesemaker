@@ -22,7 +22,7 @@ const WithdrawModal: React.FC<WithdrawModalProps> = ({ onConfirm, onDismiss, max
   }, [max])
 
   const handleChange = useCallback(
-    (e: React.FormEvent<BNBMLInputElement>) => {
+    (e: React.FormEvent<HTMLInputElement>) => {
       setVal(e.currentTarget.value)
     },
     [setVal],

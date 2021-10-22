@@ -28,7 +28,6 @@ export enum QuoteToken {
   'CNFT' = 'CNFT',
   'BUSD' = 'BUSD',
   'USDT' = 'USDT',
-  'CNFT' = 'CNFT',
   'ETH' = 'ETH',
   'USDC' = 'USDC'
 }

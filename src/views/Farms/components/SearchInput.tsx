@@ -19,7 +19,7 @@ const Container = styled.div<{ toggled: boolean }>``
 
 interface Props {
   value: string
-  onChange: (e: React.ChangeEvent<BNBMLInputElement>) => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const SearchInput: React.FC<Props> = ({ value, onChange }) => {

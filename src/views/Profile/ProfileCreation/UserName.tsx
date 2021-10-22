@@ -99,7 +99,7 @@ const UserName: React.FC = () => {
     }
   }, 200)
 
-  const handleChange = (event: ChangeEvent<BNBMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     actions.setUserName(value)
     checkUsernameValidity(value)
