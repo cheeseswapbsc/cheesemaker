@@ -50,22 +50,22 @@ const Ifo = () => {
           <Title as="h2">{TranslateString(592, 'How to participate')}</Title>
           <Heading mb="16px">{TranslateString(594, 'Step 1: Before Sale')}:</Heading>
           <List>
-            <li>{TranslateString(596, 'Buy OGE and HT tokens')}</li>
-            <li>{TranslateString(598, 'Get OGE-HT LP tokens by adding OGE and HT liquidity')}</li>
+            <li>{TranslateString(596, 'Buy CNFT and BNB tokens')}</li>
+            <li>{TranslateString(598, 'Get CNFT-BNB LP tokens by adding CNFT and BNB liquidity')}</li>
           </List>
           <Flex mb="16px">
             <Button
               as="a"
-              href="https://cnft.exchange/#/swap?inputCurrency=HT&outputCurrency=0x81c3BB76508BB4668fD38DDA71655972F4a3526F"
+              href="https://cnft.exchange/#/swap?inputCurrency=BNB&outputCurrency=0x81c3BB76508BB4668fD38DDA71655972F4a3526F"
               external
               mr="16px"
               scale="sm"
             >
-              {TranslateString(1060, 'Buy OGE')}
+              {TranslateString(1060, 'Buy CNFT')}
             </Button>
             <Button
               as="a"
-              href="https://cnft.exchange/#/add/0x81c3BB76508BB4668fD38DDA71655972F4a3526F/HT"
+              href="https://cnft.exchange/#/add/0x81c3BB76508BB4668fD38DDA71655972F4a3526F/BNB"
               external
               mr="16px"
               scale="sm"
@@ -75,7 +75,7 @@ const Ifo = () => {
           </Flex>
           <Heading mb="16px">{TranslateString(600, 'Step 2: During Sale')}:</Heading>
           <List>
-            <li>{TranslateString(602, 'While the sale is live, commit your OGE-LP tokens to buy the IDO tokens')}</li>
+            <li>{TranslateString(602, 'While the sale is live, commit your CNFT-LP tokens to buy the IDO tokens')}</li>
           </List>
           <Heading mb="16px">{TranslateString(604, 'Step 3: After Sale')}:</Heading>
           <List>

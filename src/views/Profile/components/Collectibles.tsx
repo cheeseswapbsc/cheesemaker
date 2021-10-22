@@ -42,7 +42,7 @@ const Collectibles = () => {
       <Text as="p">
         {TranslateString(
           999,
-          'CnftYield Collectibles are special ERC-721 NFTs that can be used on the Cnftswap platform.',
+          'CnftYield Collectibles are special ERC-721 NFTs that can be used on the CheeseMaker platform.',
         )}
       </Text>
       <Text as="p">

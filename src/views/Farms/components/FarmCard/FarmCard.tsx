@@ -100,15 +100,15 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cnftPrice, htPrice, 
   const [showExpandableSection, setShowExpandableSection] = useState(false)
 
   const isCommunityFarm = communityFarms.includes(farm.tokenSymbol)
-  // We assume the token name is coin pair + lp e.g. CNFT-HT LP, LINK-HT LP,
-  // NAR-CNFT LP. The images should be cnft-ht.svg, link-ht.svg, nar-cnft.svg
+  // We assume the token name is coin pair + lp e.g. CNFT-BNB LP, LINK-BNB LP,
+  // NAR-CNFT LP. The images should be cnft-bnb.svg, link-bnb.svg, nar-cnft.svg
   const farmImage = farm.lpSymbol.split(' ')[0].toLocaleLowerCase()
 
   const totalValue: BigNumber = useMemo(() => {
     if (!farm.lpTotalInQuoteToken) {
       return null
     }
-    if (farm.quoteTokenSymbol === QuoteToken.HT) {
+    if (farm.quoteTokenSymbol === QuoteToken.BNB) {
       return htPrice.times(farm.lpTotalInQuoteToken)
     }
     if (farm.quoteTokenSymbol === QuoteToken.CNFT) {

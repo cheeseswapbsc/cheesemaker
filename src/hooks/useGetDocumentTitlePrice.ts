@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import { usePriceCnftHusd } from 'state/hooks'
+import { usePriceCnftBusd } from 'state/hooks'
 
 const useGetDocumentTitlePrice = () => {
-  const cnftPriceUsd = usePriceCnftHusd()
+  const cnftPriceUsd = usePriceCnftBusd()
   useEffect(() => {
-    document.title = `Cnftswap - $${Number(cnftPriceUsd).toLocaleString(undefined, {
+    document.title = `CheeseMaker - $${Number(cnftPriceUsd).toLocaleString(undefined, {
       minimumFractionDigits: 3,
       maximumFractionDigits: 3,
     })} | Best AMM Platform on Houbi Eco Chain`

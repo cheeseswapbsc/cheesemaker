@@ -48,7 +48,7 @@ const DepositFee: React.FunctionComponent<DepositFeeProps> = ({ depositFee }) =>
             <br />
             {TranslateString(
               999,
-              'For example, if deposit fee is 1% and you deposited 100 HUSD, 1 HUSD will be sent to cnft fund.',
+              'For example, if deposit fee is 1% and you deposited 100 BUSD, 1 BUSD will be sent to cnft fund.',
             )}
           </div>
         }

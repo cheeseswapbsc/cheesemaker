@@ -24,11 +24,11 @@ export interface Ifo {
 }
 
 export enum QuoteToken {
-  'HT' = 'HT',
+  'BNB' = 'BNB',
   'CNFT' = 'CNFT',
-  'HUSD' = 'HUSD',
+  'BUSD' = 'BUSD',
   'USDT' = 'USDT',
-  'OGE' = 'OGE',
+  'CNFT' = 'CNFT',
   'ETH' = 'ETH',
   'USDC' = 'USDC'
 }
@@ -36,7 +36,7 @@ export enum QuoteToken {
 export enum PoolCategory {
   'COMMUNITY' = 'Community',
   'CORE' = 'Core',
-  'BINANCE' = 'Binance', // Pools using native HT behave differently than pools using a token
+  'BINANCE' = 'Binance', // Pools using native BNB behave differently than pools using a token
 }
 
 export interface Address {

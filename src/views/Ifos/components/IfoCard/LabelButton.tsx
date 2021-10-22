@@ -1,8 +1,8 @@
-import React, { ButtonHTMLAttributes } from 'react'
+import React, { ButtonBNBMLAttributes } from 'react'
 import styled from 'styled-components'
 import { Button, Text } from '@cheeseswapfinance/uikit'
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props extends ButtonBNBMLAttributes<BNBMLButtonElement> {
   value: string
   label?: string
   buttonLabel: string

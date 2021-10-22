@@ -24,7 +24,7 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
   }, [max])
 
   const handleChange = useCallback(
-    (e: React.FormEvent<HTMLInputElement>) => {
+    (e: React.FormEvent<BNBMLInputElement>) => {
       setVal(e.currentTarget.value)
     },
     [setVal],

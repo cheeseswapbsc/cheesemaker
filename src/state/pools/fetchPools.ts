@@ -1,7 +1,7 @@
 import poolsConfig from 'config/constants/pools'
 import cnftChefABI from 'config/abi/cnftChef.json'
 import cnftABI from 'config/abi/cnft.json'
-import whtABI from 'config/abi/weth.json'
+import wbnbABI from 'config/abi/weth.json'
 import { QuoteToken } from 'config/constants/types'
 import multicall from 'utils/multicall'
 import { getAddress, getWhtAddress } from 'utils/addressHelpers'
@@ -37,8 +37,8 @@ export const fetchPoolsBlockLimits = async () => {
 }
 
 export const fetchPoolsTotalStatking = async () => {
-  const nonHtPools = poolsConfig.filter((p) => p.stakingTokenName !== QuoteToken.HT)
-  const htPool = poolsConfig.filter((p) => p.stakingTokenName === QuoteToken.HT)
+  const nonHtPools = poolsConfig.filter((p) => p.stakingTokenName !== QuoteToken.BNB)
+  const htPool = poolsConfig.filter((p) => p.stakingTokenName === QuoteToken.BNB)
 
   const callsNonHtPools = nonHtPools.map((poolConfig) => {
     return {
@@ -57,7 +57,7 @@ export const fetchPoolsTotalStatking = async () => {
   })
 
   const nonHtPoolsTotalStaked = await multicall(cnftABI, callsNonHtPools)
-  const htPoolsTotalStaked = await multicall(whtABI, callsHtPools)
+  const htPoolsTotalStaked = await multicall(wbnbABI, callsHtPools)
 
   return [
     ...nonHtPools.map((p, index) => ({

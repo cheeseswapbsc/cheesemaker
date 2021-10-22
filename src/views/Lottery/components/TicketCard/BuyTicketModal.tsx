@@ -29,7 +29,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
     return parseInt(getFullDisplayBalance(max.div(LOTTERY_TICKET_PRICE)), 10)
   }, [max])
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement>) => setVal(e.currentTarget.value)
+  const handleChange = (e: React.FormEvent<BNBMLInputElement>) => setVal(e.currentTarget.value)
 
   const { onMultiBuy } = useMultiBuyLottery()
   const maxNumber = useMaxNumber()

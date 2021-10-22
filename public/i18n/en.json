@@ -567,19 +567,19 @@
     {
       "data": {
         "stringId": 504,
-        "text": "You\u2019ll pay for the new tokens using MANGO-HT LP tokens, which means you need to stake equal amounts of MANGO and HT in a liquidity pool to take part."
+        "text": "You\u2019ll pay for the new tokens using MANGO-BNB LP tokens, which means you need to stake equal amounts of MANGO and BNB in a liquidity pool to take part."
       }
     },
     {
       "data": {
         "stringId": 506,
-        "text": "Get MANGO-HT LP >"
+        "text": "Get MANGO-BNB LP >"
       }
     },
     {
       "data": {
         "stringId": 508,
-        "text": "The project gets the HT, Mango Finance burns the MANGO."
+        "text": "The project gets the BNB, Mango Finance burns the MANGO."
       }
     },
     {
@@ -813,13 +813,13 @@
     {
       "data": {
         "stringId": 596,
-        "text": "Buy MANGO and HT tokens"
+        "text": "Buy MANGO and BNB tokens"
       }
     },
     {
       "data": {
         "stringId": 598,
-        "text": "Get MANGO-HT LP tokens by adding MANGO and HT liquidity"
+        "text": "Get MANGO-BNB LP tokens by adding MANGO and BNB liquidity"
       }
     },
     {

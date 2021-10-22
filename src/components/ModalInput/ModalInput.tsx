@@ -8,7 +8,7 @@ interface ModalInputProps {
   max: string
   symbol: string
   onSelectMax?: () => void
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void
+  onChange: (e: React.FormEvent<BNBMLInputElement>) => void
   placeholder?: string
   value: string
   addLiquidityUrl?: string

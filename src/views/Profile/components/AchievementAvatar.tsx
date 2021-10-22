@@ -1,8 +1,8 @@
-import React, { ImgHTMLAttributes } from 'react'
+import React, { ImgBNBMLAttributes } from 'react'
 import styled from 'styled-components'
 import { BunnyPlaceholderIcon } from '@cheeseswapfinance/uikit'
 
-interface AchievementAvatarProps extends ImgHTMLAttributes<HTMLImageElement> {
+interface AchievementAvatarProps extends ImgBNBMLAttributes<BNBMLImageElement> {
   badge?: string
 }
 

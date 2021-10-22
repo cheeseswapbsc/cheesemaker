@@ -49,7 +49,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
     userData,
     stakingLimit,
   } = pool
-  // Pools using native HT behave differently than pools using a token
+  // Pools using native BNB behave differently than pools using a token
   const isHtPool = poolCategory === PoolCategory.BINANCE
   const TranslateString = useI18n()
   const stakingTokenContract = useERC20(stakingTokenAddress)

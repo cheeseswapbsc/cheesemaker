@@ -15,7 +15,7 @@ export default {
     265: '',
     56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
   },
-  wht: {
+  wbnb: {
     265: '',
     56: '0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F',
   },
@@ -31,7 +31,7 @@ export default {
     56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
     265: '',
   },
-  husd: {
+  busd: {
     56: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
     265: '',
   },

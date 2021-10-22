@@ -2,7 +2,7 @@ export const EN = { code: 'en', language: 'English' }
 export const AR = { code: 'ar', language: 'العربية' }
 export const CA = { code: 'ca', language: 'Català' }
 export const ZHCN = { code: 'zh-CN', language: '简体中文' }
-export const ZHTW = { code: 'zh-TW', language: '繁體中文' }
+export const ZBNBW = { code: 'zh-TW', language: '繁體中文' }
 export const CS = { code: 'cs', language: 'Čeština' }
 export const DA = { code: 'da', language: 'Dansk' }
 export const DE = { code: 'de', language: 'Deutsch' }
@@ -33,7 +33,7 @@ export const allLanguages = [
   // AR,
   // CA,
   // ZHCN,
-  // ZHTW,
+  // ZBNBW,
   // CS,
   // DA,
   // DE,

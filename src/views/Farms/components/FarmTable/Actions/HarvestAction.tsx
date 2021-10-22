@@ -6,7 +6,7 @@ import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useHarvest } from 'hooks/useHarvest'
 import useI18n from 'hooks/useI18n'
-import { usePriceCnftHusd } from 'state/hooks'
+import { usePriceCnftBusd } from 'state/hooks'
 import { useCountUp } from 'react-countup'
 
 import { ActionContainer, ActionTitles, Title, Subtle, ActionContent, Earned, Staked } from './styles'
@@ -14,14 +14,14 @@ import { ActionContainer, ActionTitles, Title, Subtle, ActionContent, Earned, St
 const HarvestAction: React.FunctionComponent<FarmWithStakedValue> = ({ pid, userData }) => {
   const { account } = useWeb3React()
   const earningsBigNumber = userData && account ? new BigNumber(userData.earnings) : null
-  const cnftPrice = usePriceCnftHusd()
+  const cnftPrice = usePriceCnftBusd()
   let earnings = null
-  let earningsHusd = 0
+  let earningsBusd = 0
   let displayBalance = '?'
 
   if (earningsBigNumber) {
     earnings = getBalanceNumber(earningsBigNumber)
-    earningsHusd = new BigNumber(earnings).multipliedBy(cnftPrice).toNumber()
+    earningsBusd = new BigNumber(earnings).multipliedBy(cnftPrice).toNumber()
     displayBalance = earnings.toLocaleString()
   }
 
@@ -31,7 +31,7 @@ const HarvestAction: React.FunctionComponent<FarmWithStakedValue> = ({ pid, user
 
   const { countUp, update } = useCountUp({
     start: 0,
-    end: earningsHusd,
+    end: earningsBusd,
     duration: 1,
     separator: ',',
     decimals: 3,
@@ -39,8 +39,8 @@ const HarvestAction: React.FunctionComponent<FarmWithStakedValue> = ({ pid, user
   const updateValue = useRef(update)
 
   useEffect(() => {
-    updateValue.current(earningsHusd)
-  }, [earningsHusd, updateValue])
+    updateValue.current(earningsBusd)
+  }, [earningsBusd, updateValue])
 
   return (
     <ActionContainer>

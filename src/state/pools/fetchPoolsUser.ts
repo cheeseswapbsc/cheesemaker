@@ -10,9 +10,9 @@ import { getWeb3NoAccount } from 'utils/web3'
 import BigNumber from 'bignumber.js'
 
 // Pool 0, Cnft / Cnft is a different kind of contract (master chef)
-// HT pools use the native HT token (wrapping ? unwrapping is done at the contract level)
-const nonHtPools = poolsConfig.filter((p) => p.stakingTokenName !== QuoteToken.HT)
-const htPools = poolsConfig.filter((p) => p.stakingTokenName === QuoteToken.HT)
+// BNB pools use the native BNB token (wrapping ? unwrapping is done at the contract level)
+const nonHtPools = poolsConfig.filter((p) => p.stakingTokenName !== QuoteToken.BNB)
+const htPools = poolsConfig.filter((p) => p.stakingTokenName === QuoteToken.BNB)
 const nonMasterPools = poolsConfig.filter((p) => p.cnftId !== 0)
 const web3 = getWeb3NoAccount()
 const masterChefContract = new web3.eth.Contract((masterChefABI as unknown) as AbiItem, getMasterChefAddress())
@@ -32,7 +32,7 @@ export const fetchPoolsAllowance = async (account) => {
 }
 
 export const fetchUserBalances = async (account) => {
-  // Non HT pools
+  // Non BNB pools
   const calls = nonHtPools.map((p) => ({
     address: p.stakingTokenAddress,
     name: 'balanceOf',
@@ -44,7 +44,7 @@ export const fetchUserBalances = async (account) => {
     {},
   )
 
-  // HT pools
+  // BNB pools
   const htBalance = await web3.eth.getBalance(account)
   const htBalances = htPools.reduce(
     (acc, pool) => ({ ...acc, [pool.cnftId]: new BigNumber(htBalance).toJSON() }),

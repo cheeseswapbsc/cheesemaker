@@ -5,15 +5,15 @@ import useTokenBalance from 'hooks/useTokenBalance'
 import useI18n from 'hooks/useI18n'
 import { getCnftAddress } from 'utils/addressHelpers'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { usePriceCnftHusd } from 'state/hooks'
+import { usePriceCnftBusd } from 'state/hooks'
 import { BigNumber } from 'bignumber.js'
 import CardValue from './CardValue'
-import CardHusdValue from './CardHusdValue'
+import CardBusdValue from './CardBusdValue'
 
 const CnftWalletBalance = () => {
   const TranslateString = useI18n()
   const cnftBalance = useTokenBalance(getCnftAddress())
-  const husdBalance = new BigNumber(getBalanceNumber(cnftBalance)).multipliedBy(usePriceCnftHusd()).toNumber()
+  const busdBalance = new BigNumber(getBalanceNumber(cnftBalance)).multipliedBy(usePriceCnftBusd()).toNumber()
   const { account } = useWeb3React()
 
   if (!account) {
@@ -27,7 +27,7 @@ const CnftWalletBalance = () => {
   return (
     <>
       <CardValue value={getBalanceNumber(cnftBalance)} decimals={4} fontSize="24px" lineHeight="36px" />
-      <CardHusdValue value={husdBalance} />
+      <CardBusdValue value={busdBalance} />
     </>
   )
 }

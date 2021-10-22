@@ -579,19 +579,19 @@
     {
       "data": {
         "stringId": 504,
-        "text": "\u60a8\u5c06\u4f7f\u7528 MANGO-HT LP \u4ee3\u5e01\u6765\u652f\u4ed8\u65b0\u4ee3\u5e01\u7684\u8d39\u7528\uff0c\u8fd9\u610f\u5473\u7740\u60a8\u9700\u8981\u5728\u6d41\u52a8\u6027\u8d44\u91d1\u6c60\u4e2d\u8d28\u62bc\u7b49\u91cf\u7684 MANGO \u548c HT \u624d\u80fd\u53c2\u4e0e\u3002"
+        "text": "\u60a8\u5c06\u4f7f\u7528 MANGO-BNB LP \u4ee3\u5e01\u6765\u652f\u4ed8\u65b0\u4ee3\u5e01\u7684\u8d39\u7528\uff0c\u8fd9\u610f\u5473\u7740\u60a8\u9700\u8981\u5728\u6d41\u52a8\u6027\u8d44\u91d1\u6c60\u4e2d\u8d28\u62bc\u7b49\u91cf\u7684 MANGO \u548c BNB \u624d\u80fd\u53c2\u4e0e\u3002"
       }
     },
     {
       "data": {
         "stringId": 506,
-        "text": "\u83b7\u53d6 MANGO-HT LP >"
+        "text": "\u83b7\u53d6 MANGO-BNB LP >"
       }
     },
     {
       "data": {
         "stringId": 508,
-        "text": "\u6b64\u9879\u76ee\u83b7\u5f97\u4e86 HT\uff0cMango Finance \u4f1a\u711a\u6bc1 MANGO\u3002"
+        "text": "\u6b64\u9879\u76ee\u83b7\u5f97\u4e86 BNB\uff0cMango Finance \u4f1a\u711a\u6bc1 MANGO\u3002"
       }
     },
     {
@@ -825,13 +825,13 @@
     {
       "data": {
         "stringId": 596,
-        "text": "\u8d2d\u4e70 MANGO \u548c HT \u4ee3\u5e01"
+        "text": "\u8d2d\u4e70 MANGO \u548c BNB \u4ee3\u5e01"
       }
     },
     {
       "data": {
         "stringId": 598,
-        "text": "\u901a\u8fc7\u6dfb\u52a0 MANGO \u548c HT \u6d41\u52a8\u6027\u83b7\u53d6 MANGO-HT LP \u4ee3\u5e01"
+        "text": "\u901a\u8fc7\u6dfb\u52a0 MANGO \u548c BNB \u6d41\u52a8\u6027\u83b7\u53d6 MANGO-BNB LP \u4ee3\u5e01"
       }
     },
     {

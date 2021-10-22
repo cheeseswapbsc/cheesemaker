@@ -78,7 +78,7 @@ const IfoCardDetails: React.FC<IfoCardDetailsProps> = ({ ifo, publicIfoData }) =
               <Text fontWeight="600">{raiseAmount}</Text>
             </Item>
             <Item>
-              <Display>{TranslateString(586, 'OGE to Burn (USD):')}</Display>
+              <Display>{TranslateString(586, 'CNFT to Burn (USD):')}</Display>
               <Text fontWeight="600">{cnftToBurn}</Text>
             </Item>
             <Item>

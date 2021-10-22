@@ -55,20 +55,20 @@ const ComingSoon = () => {
       <Content>
         <div>
           <Block>
-            <Title as="h2">{TranslateString(999, 'Coming Soon to Cnftswap.')}</Title>
+            <Title as="h2">{TranslateString(999, 'Coming Soon to CheeseMaker.')}</Title>
             <Text mb={3}>
               {TranslateString(
                 504,
-                'You’ll pay for the new tokens using OGE-HT LP tokens, which means you need to stake equal amounts of OGE and HT in a liquidity pool to take part.',
+                'You’ll pay for the new tokens using CNFT-BNB LP tokens, which means you need to stake equal amounts of CNFT and BNB in a liquidity pool to take part.',
               )}
             </Text>
             <Text mb={3}>
-              <LiquidityLink href="https://cnft.exchange/#/add/0x81c3BB76508BB4668fD38DDA71655972F4a3526F/HT">
-                {TranslateString(506, 'Get OGE-HT LP >')}
+              <LiquidityLink href="https://cnft.exchange/#/add/0x81c3BB76508BB4668fD38DDA71655972F4a3526F/BNB">
+                {TranslateString(506, 'Get CNFT-BNB LP >')}
               </LiquidityLink>
             </Text>
             <Text mb={3}>
-              {TranslateString(508, 'The project gets the HT, Cnftswap will burn 50% of OGE token.')}
+              {TranslateString(508, 'The project gets the BNB, CheeseMaker will burn 50% of CNFT token.')}
               <br />
               <strong>{TranslateString(510, 'You get the tokens.')}</strong>
             </Text>

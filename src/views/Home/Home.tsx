@@ -100,9 +100,9 @@ const Home: React.FC = () => {
     <Page>
       <Hero>
         <Heading as="h1" size="xl" mb="26px" color="secondary">
-          {TranslateString(576, 'Cnft Finance')}
+          {TranslateString(576, 'CheeseMaker')}
         </Heading>
-        <Text>{TranslateString(578, 'The Best AMM and Yield Farm on Huobi ECO Chain.')}</Text>
+        <Text>{TranslateString(578, 'Farming, Vault & Cross-Chain Swap DeFi By CheeseSwap')}</Text>
       </Hero>
       <div>
         <Cards>

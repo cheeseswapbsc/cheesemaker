@@ -96,29 +96,29 @@ export const usePoolFromPid = (cnftId): Pool => {
 
 // Prices
 
-export const usePriceHtHusd = (): BigNumber => {
-  const pid = 4 // HUSD-HT LP
+export const usePriceHtBusd = (): BigNumber => {
+  const pid = 4 // BUSD-BNB LP
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? new BigNumber(1).div(farm.tokenPriceVsQuote) : ZERO
 }
 
-export const usePriceCnftHusd = (): BigNumber => {
-  const pid = 2 // CNFT-HT LP
-  const htPriceUSD = usePriceHtHusd()
+export const usePriceCnftBusd = (): BigNumber => {
+  const pid = 2 // CNFT-BNB LP
+  const htPriceUSD = usePriceHtBusd()
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? htPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
 }
 
-export const usePriceOgeHusd = (): BigNumber => {
-  const pid = 1 // OGE-HT LP
-  const htPriceUSD = usePriceHtHusd()
+export const usePriceOgeBusd = (): BigNumber => {
+  const pid = 1 // CNFT-BNB LP
+  const htPriceUSD = usePriceHtBusd()
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? htPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
 }
 
-export const usePriceEthHusd = (): BigNumber => {
-  const pid = 3 // ETH-HT LP
-  const htPriceUSD = usePriceHtHusd()
+export const usePriceEthBusd = (): BigNumber => {
+  const pid = 3 // ETH-BNB LP
+  const htPriceUSD = usePriceHtBusd()
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? htPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
 }
@@ -126,14 +126,14 @@ export const usePriceEthHusd = (): BigNumber => {
 
 export const useTotalValue = (): BigNumber => {
   const farms = useFarms()
-  const htPrice = usePriceHtHusd()
-  const cnftPrice = usePriceCnftHusd()
+  const htPrice = usePriceHtBusd()
+  const cnftPrice = usePriceCnftBusd()
   let value = new BigNumber(0)
   for (let i = 0; i < farms.length; i++) {
     const farm = farms[i]
     if (farm.lpTotalInQuoteToken) {
       let val
-      if (farm.quoteTokenSymbol === QuoteToken.HT) {
+      if (farm.quoteTokenSymbol === QuoteToken.BNB) {
         val = htPrice.times(farm.lpTotalInQuoteToken)
       } else if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
         val = cnftPrice.times(farm.lpTotalInQuoteToken)

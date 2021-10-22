@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import useI18n from 'hooks/useI18n'
 import BigNumber from 'bignumber.js'
 import { QuoteToken } from 'config/constants/types'
-import { useFarms, usePriceHtHusd } from 'state/hooks'
+import { useFarms, usePriceHtBusd } from 'state/hooks'
 import { BLOCKS_PER_YEAR, CNFT_PER_BLOCK, CNFT_POOL_PID } from 'config'
 
 const StyledFarmStakingCard = styled(Card)`
@@ -28,7 +28,7 @@ const CardMidContent = styled(Heading).attrs({ size: 'xl' })`
 const EarnAPYCard = () => {
   const TranslateString = useI18n()
   const farmsLP = useFarms()
-  const htPrice = usePriceHtHusd()
+  const htPrice = usePriceHtBusd()
 
   const maxAPY = useRef(Number.MIN_VALUE)
 
@@ -42,7 +42,7 @@ const EarnAPYCard = () => {
 
   const calculateAPY = useCallback(
     (farmsToDisplay) => {
-      const cnftPriceVsHT = new BigNumber(farmsLP.find((farm) => farm.pid === CNFT_POOL_PID)?.tokenPriceVsQuote || 0)
+      const cnftPriceVsBNB = new BigNumber(farmsLP.find((farm) => farm.pid === CNFT_POOL_PID)?.tokenPriceVsQuote || 0)
 
       farmsToDisplay.map((farm) => {
         if (!farm.tokenAmount || !farm.lpTotalInQuoteToken || !farm.lpTotalInQuoteToken) {
@@ -51,15 +51,15 @@ const EarnAPYCard = () => {
         const cnftRewardPerBlock = CNFT_PER_BLOCK.times(farm.poolWeight)
         const cnftRewardPerYear = cnftRewardPerBlock.times(BLOCKS_PER_YEAR)
 
-        let apy = cnftPriceVsHT.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken)
+        let apy = cnftPriceVsBNB.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken)
 
-        if (farm.quoteTokenSymbol === QuoteToken.HT) {
-          apy = cnftPriceVsHT.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken).times(htPrice)
+        if (farm.quoteTokenSymbol === QuoteToken.BNB) {
+          apy = cnftPriceVsBNB.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken).times(htPrice)
         } else if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
           apy = cnftRewardPerYear.div(farm.lpTotalInQuoteToken)
         } else if (farm.dual) {
           const cnftApy =
-            farm && cnftPriceVsHT.times(cnftRewardPerBlock).times(BLOCKS_PER_YEAR).div(farm.lpTotalInQuoteToken)
+            farm && cnftPriceVsBNB.times(cnftRewardPerBlock).times(BLOCKS_PER_YEAR).div(farm.lpTotalInQuoteToken)
           const dualApy =
             farm.tokenPriceVsQuote &&
             new BigNumber(farm.tokenPriceVsQuote)

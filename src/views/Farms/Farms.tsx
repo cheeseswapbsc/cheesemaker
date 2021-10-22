@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import { BLOCKS_PER_YEAR, CNFT_POOL_PID } from 'config'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import { useFarms, usePriceHtHusd, usePriceCnftHusd, usePriceEthHusd } from 'state/hooks'
+import { useFarms, usePriceHtBusd, usePriceCnftBusd, usePriceEthBusd } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
 import { QuoteToken } from 'config/constants/types'
@@ -119,11 +119,11 @@ const Farms: React.FC<FarmsProps> = () => {
   const { pathname } = useLocation()
   const TranslateString = useI18n()
   const farmsLP = useFarms()
-  const cnftPrice = usePriceCnftHusd()
-  const htPrice = usePriceHtHusd()
+  const cnftPrice = usePriceCnftBusd()
+  const htPrice = usePriceHtBusd()
   const [query, setQuery] = useState('')
   const [viewMode, setViewMode] = useState(ViewMode.TABLE)
-  const ethPriceUsd = usePriceEthHusd()
+  const ethPriceUsd = usePriceEthBusd()
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
   // const { tokenMode } = farmsProps
@@ -166,7 +166,7 @@ const Farms: React.FC<FarmsProps> = () => {
   // to retrieve assets prices against USD
   const farmsList = useCallback(
     (farmsToDisplay): FarmWithStakedValue[] => {
-      const cnftPriceVsHT = new BigNumber(farmsLP.find((farm) => farm.pid === CNFT_POOL_PID)?.tokenPriceVsQuote || 0)
+      const cnftPriceVsBNB = new BigNumber(farmsLP.find((farm) => farm.pid === CNFT_POOL_PID)?.tokenPriceVsQuote || 0)
       let farmsToDisplayWithAPY: FarmWithStakedValue[] = farmsToDisplay.map((farm) => {
           if (!farm.tokenAmount || !farm.lpTotalInQuoteToken || !farm.lpTotalInQuoteToken) {
           return farm
@@ -185,14 +185,14 @@ const Farms: React.FC<FarmsProps> = () => {
 
 
         if (farm.quoteTokenSymbol === QuoteToken.USDT || farm.quoteTokenSymbol === QuoteToken.USDT) {
-               apy = cnftPriceVsHT.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken).times(htPrice)
-             } else if (farm.quoteTokenSymbol === QuoteToken.HT) {
+               apy = cnftPriceVsBNB.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken).times(htPrice)
+             } else if (farm.quoteTokenSymbol === QuoteToken.BNB) {
                apy = cnftPrice.div(ethPriceUsd).times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken)
              } else if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
                apy = cnftRewardPerYear.div(farm.lpTotalInQuoteToken)
              } else if (farm.dual) {
                const cnftApy =
-                 farm && cnftPriceVsHT.times(cnftRewardPerBlock).times(BLOCKS_PER_YEAR).div(farm.lpTotalInQuoteToken)
+                 farm && cnftPriceVsBNB.times(cnftRewardPerBlock).times(BLOCKS_PER_YEAR).div(farm.lpTotalInQuoteToken)
                const dualApy =
                  farm.tokenPriceVsQuote &&
                  new BigNumber(farm.tokenPriceVsQuote)
@@ -208,7 +208,7 @@ const Farms: React.FC<FarmsProps> = () => {
              if (!farm.lpTotalInQuoteToken) {
                liquidity = 0
              }
-             if (farm.quoteTokenSymbol === QuoteToken.HT) {
+             if (farm.quoteTokenSymbol === QuoteToken.BNB) {
                liquidity = htPrice.times(farm.lpTotalInQuoteToken)
              }
              if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
@@ -237,7 +237,7 @@ const Farms: React.FC<FarmsProps> = () => {
          [htPrice, farmsLP, query, cnftPrice, ethPriceUsd],
        )
 
-       const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
+       const handleChangeQuery = (event: React.ChangeEvent<BNBMLInputElement>) => {
          setQuery(event.target.value)
        }
 
@@ -421,7 +421,7 @@ const Farms: React.FC<FarmsProps> = () => {
           </FilterContainer>
         </ControlContainer>
         {renderContent()}
-        <StyledImage src="/images/cnft-bg.svg" alt="Cnft Finance" width={120} height={103} />
+        <StyledImage src="/images/cnft-bg.svg" alt="CheeseMaker" width={120} height={103} />
       </Page>
     </>
   )

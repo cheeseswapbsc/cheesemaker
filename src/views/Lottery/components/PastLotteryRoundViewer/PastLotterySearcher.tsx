@@ -29,12 +29,12 @@ const PastLotterySearcher: React.FC<PastLotterySearcherProps> = ({ initialLotter
   const [isError, setIsError] = useState(false)
   const TranslateString = useI18n()
 
-  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (evt: React.FormEvent<BNBMLFormElement>) => {
     evt.preventDefault()
     onSubmit(lotteryNumber)
   }
 
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (evt: React.ChangeEvent<BNBMLInputElement>) => {
     const value = parseInt(evt.currentTarget.value, 10)
 
     // The max value will always be the initialLotterNumber which equals
