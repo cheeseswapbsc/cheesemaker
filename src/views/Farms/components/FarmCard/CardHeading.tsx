@@ -7,7 +7,6 @@ export interface ExpandableSectionProps {
   lpLabel?: string
   multiplier?: string
   isCommunityFarm?: boolean
-  depositFee?: number
   farmImage?: string
   tokenSymbol?: string
 }
@@ -26,7 +25,6 @@ const CardHeading: React.FC<ExpandableSectionProps> = ({
   lpLabel,
   multiplier,
   isCommunityFarm,
-  depositFee,
   farmImage,
   tokenSymbol,
 }) => {
@@ -36,7 +34,6 @@ const CardHeading: React.FC<ExpandableSectionProps> = ({
       <Flex flexDirection="column" alignItems="flex-end">
         <Heading mb="4px">{lpLabel.split(' ')[0]}</Heading>
         <Flex justifyContent="center">
-          {depositFee === 0 ? <FeeTag /> : null}
           {isCommunityFarm ? <CommunityTag /> : <CoreTag />}
           <MultiplierTag variant="secondary">{multiplier}</MultiplierTag>
         </Flex>

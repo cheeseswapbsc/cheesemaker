@@ -1,18 +1,18 @@
 {
   "name": "cheesenft-frontend",
   "version": "0.1.2",
-  "private": true,
+  "private": false,
   "homepage": "/",
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
-    "build": "rm -rf ./build && react-scripts build",
+    "build": "rm -rf ./build && CI= GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "format:check": "prettier --check --loglevel error 'src/**/*.{js,jsx,ts,tsx}'",
-    "format:write": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
-    "generate:config": "ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/generateConfig"
+    "format:write": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
+    
   },
   "browserslist": {
     "production": [

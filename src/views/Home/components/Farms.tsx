@@ -282,9 +282,6 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
       multiplier: {
         multiplier: farm.multiplier,
       },
-      depositFee: {
-        depositFee: farm.depositFeeBP,
-      },
       details: farm,
     }
 

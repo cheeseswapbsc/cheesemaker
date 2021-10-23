@@ -6,18 +6,15 @@ import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { communityFarms } from 'config/constants'
 import { CommunityTag, CoreTag, DualTag } from 'components/Tags'
-
 import HarvestAction from './HarvestAction'
 import StakedAction from './StakedAction'
 import Apr, { AprProps } from '../Apr'
 import Multiplier, { MultiplierProps } from '../Multiplier'
-import DepositFee, { DepositFeeProps } from '../DepositFee'
 import Liquidity, { LiquidityProps } from '../Liquidity'
 
 export interface ActionPanelProps {
   apr: AprProps
   multiplier: MultiplierProps
-  depositFee: DepositFeeProps
   liquidity: LiquidityProps
   details: FarmWithStakedValue
 }
@@ -102,7 +99,7 @@ const ValueWrapper = styled.div`
   margin: 4px 0px;
 `
 
-const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, multiplier, depositFee, liquidity }) => {
+const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, multiplier, liquidity }) => {
   const farm = details
 
   const TranslateString = useI18n()
@@ -110,7 +107,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, 
   const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('CNFTYIELD', '')
   const liquidityUrlPathParts = getLiquidityUrlPathParts({ quoteTokenAdresses, tokenAddresses })
   const lpAddress = farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]
-  const bsc = `https://bscinfo.com/address/${lpAddress}`
+  const bsc = `https://bscscan.com/address/${lpAddress}`
   const info = `https://info.cnftswap.com/pair/${lpAddress}`
   const isCommunityFarm = communityFarms.includes(tokenSymbol)
 
@@ -118,7 +115,7 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, 
     <Container>
       <InfoContainer>
         <StakeContainer>
-          <StyledLinkExternal href={`https://cnft.exchange/#/add/${liquidityUrlPathParts}`}>
+          <StyledLinkExternal href={`https://cheeseswap.app/#/add/${liquidityUrlPathParts}`}>
             {TranslateString(999, `Get ${lpLabel}`, { name: lpLabel })}
           </StyledLinkExternal>
         </StakeContainer>
@@ -137,10 +134,6 @@ const ActionPanel: React.FunctionComponent<ActionPanelProps> = ({ details, apr, 
         <ValueWrapper>
           <Text>{TranslateString(999, 'Multiplier')}</Text>
           <Multiplier {...multiplier} />
-        </ValueWrapper>
-        <ValueWrapper>
-          <Text>{TranslateString(999, 'DepositFee')}</Text>
-          <DepositFee {...depositFee} />
         </ValueWrapper>
         <ValueWrapper>
           <Text>{TranslateString(999, 'Liquidity')}</Text>

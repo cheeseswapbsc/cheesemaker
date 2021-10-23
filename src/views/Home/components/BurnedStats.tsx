@@ -117,7 +117,7 @@ const BurnedStats = () => {
                   (
                     { blockNumber, address, transactionHash, timestamps, amount, price, }) => <tr className={(dateNow - timestamps) < 24 * 3600000 ? 'highlight' : ''}>
                       <td>
-                        <a href={`https://bscinfo.com/address/${address}`} target="_blank" rel="noreferrer" >
+                        <a href={`https://bscscan.com/address/${address}`} target="_blank" rel="noreferrer" >
                           {workerTable[address]
                             ? <>{workerTable[address]}</>
                             : <>{address.slice(0, 6)}..</>
@@ -131,7 +131,7 @@ const BurnedStats = () => {
                       <td>${(price * amount).toFixed(2)}</td>
                       <td className="time">{new Date(timestamps).toLocaleDateString()}</td>
                       <td className="link1">
-                        <LinkExternal color="primary" fontSize="10" small href={`https://bscinfo.com/tx/${transactionHash}`} />
+                        <LinkExternal color="primary" fontSize="10" small href={`https://bscscan.com/tx/${transactionHash}`} />
                       </td>
                     </tr>
                 )

@@ -111,7 +111,7 @@ const Farms: React.FC<FarmsProps> = () => {
   const bnbPrice = usePriceBnbUsdt()
   const [query, setQuery] = useState('')
   const [viewMode, setViewMode] = useState(ViewMode.TABLE)
-  const daiPriceUsd = usePriceBnbUsdt()
+  const daiPriceUsd = usePriceDaiBnb()
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
   const dispatch = useDispatch()
@@ -310,7 +310,7 @@ const Farms: React.FC<FarmsProps> = () => {
                 farm={farm}
                 bnbPrice={bnbPrice}
                 cnftPrice={cnftPrice}
-                daiPrice={cnftPriceUsd}
+                daiPrice={daiPriceUsd}
                 account={account}
                 removed={false}
               />

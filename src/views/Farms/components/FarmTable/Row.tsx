@@ -3,13 +3,11 @@ import styled from 'styled-components'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import { useMatchBreakpoints } from '@cheeseswapfinance/uikit'
 import useI18n from 'hooks/useI18n'
-
 import Apr, { AprProps } from './Apr'
 import Farm, { FarmProps } from './Farm'
 import Earned, { EarnedProps } from './Earned'
 import Details from './Details'
 import Multiplier, { MultiplierProps } from './Multiplier'
-import DepositFee, { DepositFeeProps } from './DepositFee'
 import Liquidity, { LiquidityProps } from './Liquidity'
 import ActionPanel from './Actions/ActionPanel'
 import CellLayout from './CellLayout'
@@ -20,7 +18,6 @@ export interface RowProps {
   farm: FarmProps
   earned: EarnedProps
   multiplier: MultiplierProps
-  depositFee: DepositFeeProps
   liquidity: LiquidityProps
   details: FarmWithStakedValue
 }
@@ -31,7 +28,6 @@ const cells = {
   earned: Earned,
   details: Details,
   multiplier: Multiplier,
-  depositFee: DepositFee,
   liquidity: Liquidity,
 }
 

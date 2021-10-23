@@ -1,7 +1,7 @@
 import { PoolConfig, QuoteToken, PoolCategory } from './types'
 
 const pools: PoolConfig[] = [
- /* *  {
+ {
     cnftId: 0,
     tokenName: 'CNFT',
     tokenAddress: '',
@@ -18,7 +18,7 @@ const pools: PoolConfig[] = [
     sortOrder: 1,
     isFinished: false,
     tokenDecimals: 18,
-  }, * */ 
+  },
 ]
 
 export default pools

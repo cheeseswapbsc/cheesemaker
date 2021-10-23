@@ -56,7 +56,7 @@ const Ifo = () => {
           <Flex mb="16px">
             <Button
               as="a"
-              href="https://cnft.exchange/#/swap?inputCurrency=BNB&outputCurrency=0x81c3BB76508BB4668fD38DDA71655972F4a3526F"
+              href="https://cheeseswap.app/#/swap?inputCurrency=BNB&outputCurrency=0x81c3BB76508BB4668fD38DDA71655972F4a3526F"
               external
               mr="16px"
               scale="sm"
@@ -65,7 +65,7 @@ const Ifo = () => {
             </Button>
             <Button
               as="a"
-              href="https://cnft.exchange/#/add/0x81c3BB76508BB4668fD38DDA71655972F4a3526F/BNB"
+              href="https://cheeseswap.app/#/add/0x81c3BB76508BB4668fD38DDA71655972F4a3526F/BNB"
               external
               mr="16px"
               scale="sm"

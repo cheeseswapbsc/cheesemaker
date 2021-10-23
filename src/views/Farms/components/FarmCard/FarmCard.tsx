@@ -114,7 +114,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cnftPrice, bnbPrice,
     if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
       return cnftPrice.times(farm.lpTotalInQuoteToken)
     }
-    if (farm.quoteTokenSymbol === QuoteToken.ETH) {
+    if (farm.quoteTokenSymbol === QuoteToken.DAI) {
       return daiPrice.times(farm.lpTotalInQuoteToken)
     }
     return farm.lpTotalInQuoteToken
@@ -141,7 +141,6 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cnftPrice, bnbPrice,
         lpLabel={lpLabel}
         multiplier={farm.multiplier}
         isCommunityFarm={isCommunityFarm}
-        depositFee={farm.depositFeeBP}
         farmImage={farmImage}
         tokenSymbol={farm.tokenSymbol}
       />
@@ -164,12 +163,6 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cnftPrice, bnbPrice,
         <Text>{TranslateString(318, 'Earn')}:</Text>
         <Text bold>{earnLabel}</Text>
       </Flex>
-      <Flex justifyContent="space-between">
-        <Text style={{ fontSize: '16px' }}>{TranslateString(10001, 'Deposit Fee')}:</Text>
-        <Text bold style={{ fontSize: '16px' }}>
-          {farm.depositFeeBP / 100}%
-        </Text>
-      </Flex>
       <CardActionsContainer farm={farm} account={account} addLiquidityUrl={addLiquidityUrl} />
       <Divider />
       <ExpandableSectionButton
@@ -179,7 +172,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cnftPrice, bnbPrice,
       <ExpandingWrapper expanded={showExpandableSection}>
         <DetailsSection
           removed={removed}
-          bscScanAddress={`https://bscinfo.com/address/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`}
+          bscScanAddress={`https://bscscan.com/address/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`}
           totalValueFormated={totalValueFormated}
           lpLabel={lpLabel}
           addLiquidityUrl={addLiquidityUrl}

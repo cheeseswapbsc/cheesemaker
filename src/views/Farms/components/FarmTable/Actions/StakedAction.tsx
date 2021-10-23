@@ -29,7 +29,6 @@ const Staked: React.FunctionComponent<FarmWithStakedValue> = ({
   lpAddresses,
   quoteTokenAdresses,
   tokenAddresses,
-  depositFeeBP,
 }) => {
   const TranslateString = useI18n()
   const { account } = useWeb3React()
@@ -48,7 +47,7 @@ const Staked: React.FunctionComponent<FarmWithStakedValue> = ({
   const displayBalance = rawStakedBalance.toLocaleString()
 
   const [onPresentDeposit] = useModal(
-    <DepositModal max={tokenBalance} onConfirm={onStake} tokenName={lpSymbol} depositFeeBP={depositFeeBP} addLiquidityUrl={addLiquidityUrl} />,
+    <DepositModal max={tokenBalance} onConfirm={onStake} tokenName={lpSymbol} addLiquidityUrl={addLiquidityUrl} />,
   )
   const [onPresentWithdraw] = useModal(<WithdrawModal max={stakedBalance} onConfirm={onUnstake} tokenName={lpSymbol} />)
 

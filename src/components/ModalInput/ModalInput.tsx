@@ -13,7 +13,6 @@ interface ModalInputProps {
   value: string
   addLiquidityUrl?: string
   inputTitle?: string
-  depositFeeBP?: number
 }
 
 const getBoxShadow = ({ isWarning = false, theme }) => {
@@ -75,7 +74,6 @@ const ModalInput: React.FC<ModalInputProps> = ({
   value,
   addLiquidityUrl,
   inputTitle,
-  depositFeeBP = 0,
 }) => {
   const TranslateString = useI18n()
   const isBalanceZero = max === '0' || !max
@@ -107,13 +105,7 @@ const ModalInput: React.FC<ModalInputProps> = ({
           </Link>
         </StyledErrorMessage>
       )}
-      {depositFeeBP > 0 ? (
-      <StyledMaxText>
-        {TranslateString(10001, 'Deposit Fee')}: {new BigNumber(value || 0).times(depositFeeBP / 10000).toString()}{' '}
-        {symbol}
-      </StyledMaxText>
-    ) : null}
-    </div>
+      </div>
   )
 }
 

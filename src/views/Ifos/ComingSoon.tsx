@@ -63,7 +63,7 @@ const ComingSoon = () => {
               )}
             </Text>
             <Text mb={3}>
-              <LiquidityLink href="https://cnft.exchange/#/add/0x81c3BB76508BB4668fD38DDA71655972F4a3526F/BNB">
+              <LiquidityLink href="https://cheeseswap.app/#/add/0x81c3BB76508BB4668fD38DDA71655972F4a3526F/BNB">
                 {TranslateString(506, 'Get CNFT-BNB LP >')}
               </LiquidityLink>
             </Text>

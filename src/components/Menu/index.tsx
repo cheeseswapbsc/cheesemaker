@@ -13,7 +13,7 @@ const Menu = (props) => {
   const { login, logout } = useAuth()
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
   const { isDark, toggleTheme } = useTheme()
-  const cnftPriceUsd = usePriceCnftBusd()
+  const cnftPriceBusd = usePriceCnftBusd()
   const { profile } = useProfile()
 
   return (
@@ -26,7 +26,7 @@ const Menu = (props) => {
       currentLang={selectedLanguage && selectedLanguage.code}
       langs={allLanguages}
       setLang={setSelectedLanguage}
-      cnftPriceUsd={cnftPriceUsd.toNumber()}
+      cnftPriceBusd={cnftPriceBusd.toNumber()}
       links={config}
       profile={{
         username: profile?.username,

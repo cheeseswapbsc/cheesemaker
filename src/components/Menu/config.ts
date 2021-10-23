@@ -12,11 +12,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'https://cnft.exchange',
+        href: 'https://cheeseswap.app',
       },
       {
         label: 'Liquidity',
-        href: 'https://cnft.exchange/#/pool',
+        href: 'https://cheeseswap.app/#/pool',
       },
     ],
   },
@@ -30,54 +30,30 @@ const config: MenuEntry[] = [
     icon: 'PoolIcon',
     href: '/pools',
   },
-//  {
-//    label: 'Lottery',
-//    icon: 'TicketIcon',
-//    href: '/lottery',
-//  },
-//  {
-//    label: 'Collectibles',
-//    icon: 'NftIcon',
-//    href: '/collectibles',
-//  },
-//  {
-//    label: 'Teams & Profile',
-//    icon: 'GroupsIcon',
-//    calloutClass: 'rainbow',
-//    items: [
-//      {
-//        label: 'Leaderboard',
-//        href: '/teams',
-//      },
-//      {
-//        label: 'Task Center',
-//        href: '/profile/tasks',
-//      },
-//      {
-//        label: 'Your Profile',
-//        href: '/profile',
-//      },
-//    ],
-//  },
+  {
+    label: 'NFT Marketplace',
+    icon: 'TicketIcon',
+    href: 'https://cheesecake.best',
+    },
   {
     label: 'Info',
     icon: 'InfoIcon',
     items: [
       {
         label: 'Overview',
-        href: 'https://info.cnft.exchange/#/home',
+        href: 'https://info.cheeseswap.app/#/home',
       },
       {
         label: 'Tokens',
-        href: 'https://info.cnft.exchange/#/tokens',
+        href: 'https://info.cheeseswap.app/#/tokens',
       },
       {
         label: 'Pairs',
-        href: 'https://info.cnft.exchange/#/pairs',
+        href: 'https://info.cheeseswap.app/#/pairs',
       },
       {
         label: 'Accounts',
-        href: 'https://info.cnft.exchange/#/accounts',
+        href: 'https://info.cheeseswap.app/#/accounts',
       },
     ],
   },
@@ -97,11 +73,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Github',
-        href: 'https://github.com/cnftfinance',
+        href: 'https://github.com/cheeseswapbsc',
       },
       {
         label: 'Docs',
-        href: 'https://docs.cnftswap.com',
+        href: 'https://docs.cheesemaker.farm',
       },
     ],
   },
