@@ -88,13 +88,13 @@ interface FarmCardProps {
   farm: FarmWithStakedValue
   removed: boolean
   cnftPrice?: BigNumber
-  htPrice?: BigNumber
-  ethPrice?: BigNumber
+  bnbPrice?: BigNumber
+  daiPrice?: BigNumber
   provider?: ProviderType
   account?: string
 }
 
-const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cnftPrice, htPrice, ethPrice, account }) => {
+const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cnftPrice, bnbPrice, daiPrice, account }) => {
   const TranslateString = useI18n()
 
   const [showExpandableSection, setShowExpandableSection] = useState(false)
@@ -109,16 +109,16 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cnftPrice, htPrice, 
       return null
     }
     if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-      return htPrice.times(farm.lpTotalInQuoteToken)
+      return bnbPrice.times(farm.lpTotalInQuoteToken)
     }
     if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
       return cnftPrice.times(farm.lpTotalInQuoteToken)
     }
     if (farm.quoteTokenSymbol === QuoteToken.ETH) {
-      return ethPrice.times(farm.lpTotalInQuoteToken)
+      return daiPrice.times(farm.lpTotalInQuoteToken)
     }
     return farm.lpTotalInQuoteToken
-  }, [htPrice, cnftPrice, ethPrice, farm.lpTotalInQuoteToken, farm.quoteTokenSymbol])
+  }, [bnbPrice, cnftPrice, daiPrice, farm.lpTotalInQuoteToken, farm.quoteTokenSymbol])
 
   const totalValueFormated = totalValue
     ? `$${Number(totalValue).toLocaleString(undefined, { maximumFractionDigits: 0 })}`

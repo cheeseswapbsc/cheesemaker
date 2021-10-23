@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTotalClaim } from 'hooks/useTickets'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { usePriceCnftBnb } from 'state/hooks'
+import { usePriceCnftBusd } from 'state/hooks'
 import { BigNumber } from 'bignumber.js'
 import styled from 'styled-components'
 import CardValue from './CardValue'
@@ -14,7 +14,7 @@ const Block = styled.div`
 const CnftWinnings = () => {
   const { claimAmount } = useTotalClaim()
   const cnftAmount = getBalanceNumber(claimAmount)
-  const claimAmountBusd = new BigNumber(cnftAmount).multipliedBy(usePriceCnftBnb()).toNumber()
+  const claimAmountBusd = new BigNumber(cnftAmount).multipliedBy(usePriceCnftBusd()).toNumber()
 
   return (
     <Block>

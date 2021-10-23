@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import { BLOCKS_PER_YEAR, CNFT_POOL_PID } from 'config'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import { useFarms, usePriceBnbBusd, usePriceCnftBnb } from 'state/hooks'
+import { useFarms, usePriceBnbUsdt, usePriceCnftBusd, usePriceDaiBnb } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
 import { QuoteToken } from 'config/constants/types'
@@ -100,32 +100,20 @@ const StyledImage = styled(Image)`
   margin-top: 58px;
 `
 
-const Header = styled.div`
-  padding: 32px 0px;
-  background: ${({ theme }) => theme.colors.gradients.bubblegum};
 
-  padding-left: 16px;
-  padding-right: 16px;
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-`
 
 const Farms: React.FC<FarmsProps> = () => {
   const { path } = useRouteMatch()
   const { pathname } = useLocation()
   const TranslateString = useI18n()
   const farmsLP = useFarms()
-  const cnftPrice = usePriceCnftBnb()
-  const htPrice = usePriceBnbBusd()
+  const cnftPrice = usePriceCnftBusd()
+  const bnbPrice = usePriceBnbUsdt()
   const [query, setQuery] = useState('')
   const [viewMode, setViewMode] = useState(ViewMode.TABLE)
-  const ethPriceUsd = usePriceCnftBnb()
+  const daiPriceUsd = usePriceBnbUsdt()
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
-  // const { tokenMode } = farmsProps
   const dispatch = useDispatch()
   const { fastRefresh } = useRefresh()
   useEffect(() => {
@@ -153,16 +141,11 @@ const Farms: React.FC<FarmsProps> = () => {
         return orderBy(farms, (farm: FarmWithStakedValue) => (farm.userData ? farm.userData.earnings : 0), 'desc')
       case 'liquidity':
         return orderBy(farms, (farm: FarmWithStakedValue) => Number(farm.liquidity), 'desc')
-      case 'depositFee':
-        return orderBy(farms, (farm: FarmWithStakedValue) => Number(farm.depositFeeBP), 'asc')
       default:
         return farms
     }
   }
 
-  // /!\ This function will be removed soon
-  // This function compute the APY for each farm and will be replaced when we have a reliable API
-  // to retrieve assets prices against USD
   const farmsList = useCallback(
     (farmsToDisplay): FarmWithStakedValue[] => {
       const cnftPriceVsBNB = new BigNumber(farmsLP.find((farm) => farm.pid === CNFT_POOL_PID)?.tokenPriceVsQuote || 0)
@@ -174,20 +157,18 @@ const Farms: React.FC<FarmsProps> = () => {
           .times(new BigNumber(farm.poolWeight))
           .div(new BigNumber(10).pow(18))
         const cnftRewardPerYear = cnftRewardPerBlock.times(BLOCKS_PER_YEAR)
+         let apy = cnftPrice.times(cnftRewardPerYear)
 
-        // cnftPriceInQuote * cnftRewardPerYear / lpTotalInQuoteToken
-      let apy = cnftPrice.times(cnftRewardPerYear)
-
-        const totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0)
+  //      const totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0)
 
 
 
 
-        if (farm.quoteTokenSymbol === QuoteToken.USDT || farm.quoteTokenSymbol === QuoteToken.USDT) {
-               apy = cnftPriceVsBNB.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken).times(htPrice)
-             } else if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-               apy = cnftPrice.div(ethPriceUsd).times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken)
-             } else if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
+        if (farm.quoteTokenSymbol === QuoteToken.BUSD || farm.quoteTokenSymbol === QuoteToken.BNB) {
+               apy = cnftPriceVsBNB.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken).times(bnbPrice)
+             } else if (farm.quoteTokenSymbol === QuoteToken.USDT) {
+               apy = cnftPrice.div(daiPriceUsd).times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken)
+             } else if (farm.quoteTokenSymbol === QuoteToken.DAI) {
                apy = cnftRewardPerYear.div(farm.lpTotalInQuoteToken)
              } else if (farm.dual) {
                const cnftApy =
@@ -208,14 +189,14 @@ const Farms: React.FC<FarmsProps> = () => {
                liquidity = 0
              }
              if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-               liquidity = htPrice.times(farm.lpTotalInQuoteToken)
+               liquidity = bnbPrice.times(farm.lpTotalInQuoteToken)
              }
              if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
                liquidity = cnftPrice.times(farm.lpTotalInQuoteToken)
              }
 
-             if (farm.quoteTokenSymbol === QuoteToken.USDT) {
-               liquidity = ethPriceUsd.times(farm.lpTotalInQuoteToken)
+             if (farm.quoteTokenSymbol === QuoteToken.BNB) {
+               liquidity = daiPriceUsd.times(farm.lpTotalInQuoteToken)
              }
 
              return { ...farm, apy, liquidity }
@@ -233,7 +214,7 @@ const Farms: React.FC<FarmsProps> = () => {
            }
            return farmsToDisplayWithAPY
          },
-         [htPrice, farmsLP, query, cnftPrice, ethPriceUsd],
+         [bnbPrice, farmsLP, query, cnftPrice, daiPriceUsd],
        )
 
        const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -283,9 +264,6 @@ const Farms: React.FC<FarmsProps> = () => {
       multiplier: {
         multiplier: farm.multiplier,
       },
-      depositFee: {
-        depositFee: farm.depositFeeBP,
-      },
       details: farm,
     }
 
@@ -330,9 +308,9 @@ const Farms: React.FC<FarmsProps> = () => {
               <FarmCard
                 key={farm.pid}
                 farm={farm}
-                htPrice={htPrice}
+                bnbPrice={bnbPrice}
                 cnftPrice={cnftPrice}
-                ethPrice={ethPriceUsd}
+                daiPrice={cnftPriceUsd}
                 account={account}
                 removed={false}
               />
@@ -343,9 +321,9 @@ const Farms: React.FC<FarmsProps> = () => {
               <FarmCard
                 key={farm.pid}
                 farm={farm}
-                htPrice={htPrice}
+                bnbPrice={bnbPrice}
                 cnftPrice={cnftPrice}
-                ethPrice={ethPriceUsd}
+                daiPrice={daiPriceUsd}
                 account={account}
                 removed
               />
@@ -408,11 +386,7 @@ const Farms: React.FC<FarmsProps> = () => {
                     label: 'Liquidity',
                     value: 'liquidity',
                   },
-                  {
-                    label: 'Deposit Fee',
-                    value: 'depositFee',
-                  },
-                ]}
+                  ]}
                 onChange={handleSortOptionChange}
               />
             </LabelWrapper>

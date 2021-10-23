@@ -32,7 +32,7 @@ import lotteryAbi from 'config/abi/lottery.json'
 import lotteryTicketAbi from 'config/abi/lotteryNft.json'
 import masterChef from 'config/abi/masterchef.json'
 import cnftChef from 'config/abi/cnftChef.json'
-import cnftChefHt from 'config/abi/cnftChefHt.json'
+import cnftChefBnb from 'config/abi/cnftChefBnb.json'
 import claimRefundAbi from 'config/abi/claimRefund.json'
 
 const getContract = (abi: any, address: string, web3?: Web3) => {
@@ -48,7 +48,7 @@ export const getIfoContract = (address: string, web3?: Web3) => {
 }
 export const getCnftchefContract = (id: number, web3?: Web3) => {
   const config = poolsConfig.find((pool) => pool.cnftId === id)
-  const abi = config.poolCategory === PoolCategory.BINANCE ? cnftChefHt : cnftChef
+  const abi = config.poolCategory === PoolCategory.BINANCE ? cnftChefBnb : cnftChef
   return getContract(abi, getAddress(config.contractAddress), web3)
 }
 export const getPointCenterIfoContract = (web3?: Web3) => {

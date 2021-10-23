@@ -96,36 +96,43 @@ export const usePoolFromPid = (cnftId): Pool => {
 
 // Prices
 
-export const usePriceBnbBusd = (): BigNumber => {
-  const pid = 7 // BUSD-BNB LP
+export const usePriceBnbUsdt = (): BigNumber => {
+  const pid = 7 // USDT-BNB LP
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? new BigNumber(1).div(farm.tokenPriceVsQuote) : ZERO
 }
 
-export const usePriceCnftBnb = (): BigNumber => {
-  const pid = 4 // CNFT-BNB LP
-  const htPriceUSD = usePriceBnbBusd()
+export const usePriceCnftBusd = (): BigNumber => {
+  const pid = 2 // CNFT-BUSD LP
+  const bnbPriceUSD = usePriceBnbUsdt()
   const farm = useFarmFromPid(pid)
-  return farm.tokenPriceVsQuote ? htPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
+  return farm.tokenPriceVsQuote ? bnbPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
 }
 
-
+export const usePriceDaiBnb = (): BigNumber => {
+  const pid = 8 // CNFT-BNB LP
+  const bnbPriceUSD = usePriceBnbUsdt()
+  const farm = useFarmFromPid(pid)
+  return farm.tokenPriceVsQuote ? bnbPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
+}
 
 
 export const useTotalValue = (): BigNumber => {
   const farms = useFarms()
-  const htPrice = usePriceBnbBusd()
-  const cnftPrice = usePriceCnftBnb()
+  const bnbPrice = usePriceBnbUsdt()
+  const cnftPrice = usePriceCnftBusd()
   let value = new BigNumber(0)
   for (let i = 0; i < farms.length; i++) {
     const farm = farms[i]
     if (farm.lpTotalInQuoteToken) {
       let val
       if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-        val = htPrice.times(farm.lpTotalInQuoteToken)
-      } else if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
+        val = bnbPrice.times(farm.lpTotalInQuoteToken)
+      } else if (farm.quoteTokenSymbol === QuoteToken.BUSD) {
         val = cnftPrice.times(farm.lpTotalInQuoteToken)
-      } else {
+      }else if (farm.quoteTokenSymbol === QuoteToken.USDT) {
+        val = cnftPrice.times(farm.lpTotalInQuoteToken)
+      }else {
         val = farm.lpTotalInQuoteToken
       }
       value = value.plus(val)

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import useI18n from 'hooks/useI18n'
 import BigNumber from 'bignumber.js'
 import { QuoteToken } from 'config/constants/types'
-import { useFarms, usePriceBnbBusd } from 'state/hooks'
+import { useFarms, usePriceBnbUsdt } from 'state/hooks'
 import { BLOCKS_PER_YEAR, CNFT_PER_BLOCK, CNFT_POOL_PID } from 'config'
 
 const StyledFarmStakingCard = styled(Card)`
@@ -28,7 +28,7 @@ const CardMidContent = styled(Heading).attrs({ size: 'xl' })`
 const EarnAPYCard = () => {
   const TranslateString = useI18n()
   const farmsLP = useFarms()
-  const htPrice = usePriceBnbBusd()
+  const bnbPrice = usePriceBnbUsdt()
 
   const maxAPY = useRef(Number.MIN_VALUE)
 
@@ -54,7 +54,7 @@ const EarnAPYCard = () => {
         let apy = cnftPriceVsBNB.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken)
 
         if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-          apy = cnftPriceVsBNB.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken).times(htPrice)
+          apy = cnftPriceVsBNB.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken).times(bnbPrice)
         } else if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
           apy = cnftRewardPerYear.div(farm.lpTotalInQuoteToken)
         } else if (farm.dual) {
@@ -75,7 +75,7 @@ const EarnAPYCard = () => {
         return apy
       })
     },
-    [htPrice, farmsLP],
+    [bnbPrice, farmsLP],
   )
 
   return (

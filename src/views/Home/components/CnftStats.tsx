@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalSupply, useBurnedBalance, useLbalance } from 'hooks/useTokenBalance'
 import useI18n from 'hooks/useI18n'
-import { BLOCKS_PER_YEAR, CNFT_PER_BLOCK, CNFT_POOL_PID } from 'config'
+import { CNFT_PER_BLOCK, CNFT_POOL_PID } from 'config'
 import { getCnftAddress } from 'utils/addressHelpers'
 import CardValue from './CardValue'
-import { usePriceCnftBnb } from '../../../state/hooks'
+import { usePriceCnftBusd } from '../../../state/hooks'
 import CardBusdValue from './CardBusdValue'
 
 
@@ -36,12 +36,12 @@ const CnftStats = () => {
   const burnedBalance = useBurnedBalance(getCnftAddress())
   const lockedBalance = useLbalance(getCnftAddress())
   // const lbBalance = new BigNumber(lockedBalance)
-  const cnftPrice = usePriceCnftBnb()
+  const cnftPrice = usePriceCnftBusd()
   const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0)
   const cnftSupply = getBalanceNumber(circSupply)
   const marketCap = cnftPrice.times(circSupply)
-  const totalMcapBusd = new BigNumber(totalSupply).div(new BigNumber(10).pow(18)).multipliedBy(usePriceCnftBnb()).toNumber()
-  const totalBurnedBusd = new BigNumber(burnedBalance).div(new BigNumber(10).pow(18)).multipliedBy(usePriceCnftBnb()).toNumber()
+  const totalMcapBusd = new BigNumber(totalSupply).div(new BigNumber(10).pow(18)).multipliedBy(usePriceCnftBusd()).toNumber()
+  const totalBurnedBusd = new BigNumber(burnedBalance).div(new BigNumber(10).pow(18)).multipliedBy(usePriceCnftBusd()).toNumber()
   const cnftPerBlock = Number(CNFT_PER_BLOCK)
 
 

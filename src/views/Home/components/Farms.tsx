@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import { BLOCKS_PER_YEAR, CNFT_POOL_PID } from 'config'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import { useFarms, usePriceBnbBusd, usePriceCnftBnb } from 'state/hooks'
+import { useFarms, usePriceBnbUsdt, usePriceCnftBusd } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
 import { QuoteToken } from 'config/constants/types'
@@ -119,11 +119,11 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const { pathname } = useLocation()
   const TranslateString = useI18n()
   const farmsLP = useFarms()
-  const cnftPrice = usePriceCnftBnb()
-  const htPrice = usePriceBnbBusd()
+  const cnftPrice = usePriceCnftBusd()
+  const bnbPrice = usePriceBnbUsdt()
   const [query, setQuery] = useState('')
   const [viewMode, setViewMode] = useState(ViewMode.TABLE)
-  const ethPriceUsd = usePriceCnftBnb()
+  const daiPriceUsd = usePriceCnftBusd()
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
   const { tokenMode } = farmsProps
@@ -183,9 +183,9 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
 
 
         if (farm.quoteTokenSymbol === QuoteToken.BUSD || farm.quoteTokenSymbol === QuoteToken.USDT) {
-               apy = cnftPriceVsBNB.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken).times(htPrice)
+               apy = cnftPriceVsBNB.times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken).times(bnbPrice)
              } else if (farm.quoteTokenSymbol === QuoteToken.ETH) {
-               apy = cnftPrice.div(ethPriceUsd).times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken)
+               apy = cnftPrice.div(daiPriceUsd).times(cnftRewardPerYear).div(farm.lpTotalInQuoteToken)
              } else if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
                apy = cnftRewardPerYear.div(farm.lpTotalInQuoteToken)
              } else if (farm.dual) {
@@ -207,14 +207,14 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
                liquidity = null
              }
              if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-               liquidity = htPrice.times(farm.lpTotalInQuoteToken)
+               liquidity = bnbPrice.times(farm.lpTotalInQuoteToken)
              }
              if (farm.quoteTokenSymbol === QuoteToken.CNFT) {
                liquidity = cnftPrice.times(farm.lpTotalInQuoteToken)
              }
 
              if (farm.quoteTokenSymbol === QuoteToken.ETH) {
-               liquidity = ethPriceUsd.times(farm.lpTotalInQuoteToken)
+               liquidity = daiPriceUsd.times(farm.lpTotalInQuoteToken)
              }
 
              return { ...farm, apy, liquidity }
@@ -232,7 +232,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
            }
            return farmsToDisplayWithAPY
          },
-         [htPrice, farmsLP, query, cnftPrice, ethPriceUsd],
+         [bnbPrice, farmsLP, query, cnftPrice, daiPriceUsd],
        )
 
        const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -329,9 +329,9 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
               <FarmCard
                 key={farm.pid}
                 farm={farm}
-                htPrice={htPrice}
+                bnbPrice={bnbPrice}
                 cnftPrice={cnftPrice}
-                ethPrice={ethPriceUsd}
+                daiPrice={daiPriceUsd}
                 account={account}
                 removed={false}
               />
@@ -342,9 +342,9 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
               <FarmCard
                 key={farm.pid}
                 farm={farm}
-                htPrice={htPrice}
+                bnbPrice={bnbPrice}
                 cnftPrice={cnftPrice}
-                ethPrice={ethPriceUsd}
+                daiPrice={daiPriceUsd}
                 account={account}
                 removed
               />
