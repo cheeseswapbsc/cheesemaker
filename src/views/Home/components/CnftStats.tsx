@@ -8,7 +8,7 @@ import useI18n from 'hooks/useI18n'
 import { BLOCKS_PER_YEAR, CNFT_PER_BLOCK, CNFT_POOL_PID } from 'config'
 import { getCnftAddress } from 'utils/addressHelpers'
 import CardValue from './CardValue'
-import { usePriceCnftBusd } from '../../../state/hooks'
+import { usePriceCnftBnb } from '../../../state/hooks'
 import CardBusdValue from './CardBusdValue'
 
 
@@ -36,12 +36,12 @@ const CnftStats = () => {
   const burnedBalance = useBurnedBalance(getCnftAddress())
   const lockedBalance = useLbalance(getCnftAddress())
   // const lbBalance = new BigNumber(lockedBalance)
-  const cnftPrice = usePriceCnftBusd()
+  const cnftPrice = usePriceCnftBnb()
   const circSupply = totalSupply ? totalSupply.minus(burnedBalance) : new BigNumber(0)
   const cnftSupply = getBalanceNumber(circSupply)
   const marketCap = cnftPrice.times(circSupply)
-  const totalMcapBusd = new BigNumber(totalSupply).div(new BigNumber(10).pow(18)).multipliedBy(usePriceCnftBusd()).toNumber()
-  const totalBurnedBusd = new BigNumber(burnedBalance).div(new BigNumber(10).pow(18)).multipliedBy(usePriceCnftBusd()).toNumber()
+  const totalMcapBusd = new BigNumber(totalSupply).div(new BigNumber(10).pow(18)).multipliedBy(usePriceCnftBnb()).toNumber()
+  const totalBurnedBusd = new BigNumber(burnedBalance).div(new BigNumber(10).pow(18)).multipliedBy(usePriceCnftBnb()).toNumber()
   const cnftPerBlock = Number(CNFT_PER_BLOCK)
 
 
@@ -61,11 +61,11 @@ const CnftStats = () => {
         </Block>
         <Block>
           <Label>{TranslateString(536, 'Total CNFT Burned')}:</Label>
-          <CardValue fontSize="24px" value={getBalanceNumber(burnedBalance)+3000000} decimals={0} />
+          <CardValue fontSize="24px" value={getBalanceNumber(burnedBalance)} decimals={0} />
         </Block>
         <Block>
           <Label>{TranslateString(10004, 'Circulating Supply')}:</Label>
-          {cnftSupply && <CardValue fontSize="24px" value={cnftSupply-3000000} decimals={0} />}
+          {cnftSupply && <CardValue fontSize="24px" value={cnftSupply} decimals={0} />}
         </Block>
         <Block>
           <Label>{TranslateString(540, 'New CNFT/block')}:</Label>

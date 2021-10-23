@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import { BLOCKS_PER_YEAR, CNFT_POOL_PID } from 'config'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import { useFarms, usePriceHtBusd, usePriceCnftBusd, usePriceEthBusd } from 'state/hooks'
+import { useFarms, usePriceBnbBusd, usePriceCnftBnb } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
 import { QuoteToken } from 'config/constants/types'
@@ -118,11 +118,11 @@ const Farms: React.FC<FarmsProps> = () => {
   const { pathname } = useLocation()
   const TranslateString = useI18n()
   const farmsLP = useFarms()
-  const cnftPrice = usePriceCnftBusd()
-  const htPrice = usePriceHtBusd()
+  const cnftPrice = usePriceCnftBnb()
+  const htPrice = usePriceBnbBusd()
   const [query, setQuery] = useState('')
   const [viewMode, setViewMode] = useState(ViewMode.TABLE)
-  const ethPriceUsd = usePriceEthBusd()
+  const ethPriceUsd = usePriceCnftBnb()
   const { account } = useWeb3React()
   const [sortOption, setSortOption] = useState('hot')
   // const { tokenMode } = farmsProps

@@ -96,38 +96,26 @@ export const usePoolFromPid = (cnftId): Pool => {
 
 // Prices
 
-export const usePriceHtBusd = (): BigNumber => {
-  const pid = 4 // BUSD-BNB LP
+export const usePriceBnbBusd = (): BigNumber => {
+  const pid = 7 // BUSD-BNB LP
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? new BigNumber(1).div(farm.tokenPriceVsQuote) : ZERO
 }
 
-export const usePriceCnftBusd = (): BigNumber => {
-  const pid = 2 // CNFT-BNB LP
-  const htPriceUSD = usePriceHtBusd()
+export const usePriceCnftBnb = (): BigNumber => {
+  const pid = 4 // CNFT-BNB LP
+  const htPriceUSD = usePriceBnbBusd()
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? htPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
 }
 
-export const usePriceOgeBusd = (): BigNumber => {
-  const pid = 1 // CNFT-BNB LP
-  const htPriceUSD = usePriceHtBusd()
-  const farm = useFarmFromPid(pid)
-  return farm.tokenPriceVsQuote ? htPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
-}
 
-export const usePriceEthBusd = (): BigNumber => {
-  const pid = 3 // ETH-BNB LP
-  const htPriceUSD = usePriceHtBusd()
-  const farm = useFarmFromPid(pid)
-  return farm.tokenPriceVsQuote ? htPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
-}
 
 
 export const useTotalValue = (): BigNumber => {
   const farms = useFarms()
-  const htPrice = usePriceHtBusd()
-  const cnftPrice = usePriceCnftBusd()
+  const htPrice = usePriceBnbBusd()
+  const cnftPrice = usePriceCnftBnb()
   let value = new BigNumber(0)
   for (let i = 0; i < farms.length; i++) {
     const farm = farms[i]

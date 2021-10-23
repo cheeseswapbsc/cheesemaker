@@ -1,78 +1,90 @@
 export default {
   cnft: {
-    265: '',
-    56: '0x38F950511a2479206aC640818f1F7bd093277E02',
-  },
-  oge: {
-    265: '',
-    56: '0x81c3BB76508BB4668fD38DDA71655972F4a3526F',
+    97: '',
+    56: '0xc6D866628B5A1C63E196557C1BA189211b779F64',
   },
   masterChef: {
-    265: '',
-    56: '0x5917897DEdEa3556d8C19eA6e3C861FcbFAe786b',
+    97: '',
+    56: '0xdC4E6ce3e35f1BC83EDA4eFA54A5F589Cae783Ce',
   },
   cnftChef: {
-    265: '',
-    56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
+    97: '',
+    56: '0xdC4E6ce3e35f1BC83EDA4eFA54A5F589Cae783Ce',
   },
   wbnb: {
-    265: '',
-    56: '0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F',
+    97: '',
+    56: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
   },
   lottery: {
-    265: '',
-    56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
+    97: '',
+    56: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
   },
   lotteryNFT: {
-    265: '',
-    56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
+    97: '',
+    56: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
   },
   mulltiCall: {
-    56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
-    265: '',
+    56: '0x52E54D127cA6474aB1C700335C4714f2515b4f3D',
+    97: '',
   },
   busd: {
-    56: '0x0298c2b32eaE4da002a15f36fdf7615BEa3DA047',
-    265: '',
+    56: '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
+    97: '',
   },
   usdt: {
-    56: '0xa71EdC38d189767582C38A3145b5873052c3e47a',
-    265: '',
+    56: '0x55d398326f99059fF775485246999027B3197955',
+    97: '',
      },
   usdc: {
-      56: '0x9362Bbef4B8313A8Aa9f0c9808B80577Aa26B73B',
-      265: '',
+      56: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+      97: '',
       },
-  eth: {
-    56: '0x64FF637fB478863B7468bc97D30a5bF3A428a1fD',
-    265: '',
-  },
+  chs: {
+          56: '0xaDD8A06fd58761A5047426e160B2B88AD3B9D464',
+          97: '',
+          },
+  pizza: {
+          56: '0x2cc26dd730F548dc4ac291ae7D84a0C96980d2cB',
+          97: '',
+        },
+  kitty: {
+        56: '0x5b4963B964bAc5C2Db83e53ffFe46E0cb83a1346',
+        97: '',
+      },
+  mango: {
+        56: '0x3d29cdb00cb183a0aeceea4fb73f55e1450af3d4',
+        97: '',
+          },
+dai: {
+        56: '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3',
+        97: '',
+      },
   ifo: {
-    56: '0x3495162187dcAE3fF6EA99d1525aF3E980F6b9d4',
-    265: '',
+    56: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+    97: '',
   },
   cnftYieldProfile: {
-    56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
-    265: '',
+    56: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+    97: '',
   },
   cnftYieldRabbits: {
-    56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
-    265: '',
+    56: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+    97: '',
   },
   bunnyFactory: {
-    56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
-    265: '',
+    56: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+    97: '',
   },
   claimRefund: {
-    56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
-    265: '',
+    56: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+    97: '',
   },
   pointCenterIfo: {
-    56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
-    265: '',
+    56: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+    97: '',
   },
   bunnySpecial: {
-    56: '0x713e35713757cC28F96a0Eb2D95cf984c68B2471',
-    265: '',
+    56: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+    97: '',
   },
 }

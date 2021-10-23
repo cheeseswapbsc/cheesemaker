@@ -2,18 +2,13 @@
   {
     "inputs": [
       {
-        "internalType": "contract CnftYield",
+        "internalType": "contract CheeseNFT",
         "name": "_cnft",
         "type": "address"
       },
       {
         "internalType": "address",
         "name": "_devaddr",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_feeAddress",
         "type": "address"
       },
       {
@@ -24,6 +19,11 @@
       {
         "internalType": "uint256",
         "name": "_startBlock",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_bonusEndBlock",
         "type": "uint256"
       }
     ],
@@ -145,14 +145,9 @@
         "type": "uint256"
       },
       {
-        "internalType": "contract IHRC20",
+        "internalType": "contract IBEP20",
         "name": "_lpToken",
         "type": "address"
-      },
-      {
-        "internalType": "uint16",
-        "name": "_depositFeeBP",
-        "type": "uint16"
       },
       {
         "internalType": "bool",
@@ -163,6 +158,45 @@
     "name": "add",
     "outputs": [],
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "bonusEndBlock",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "cnft",
+    "outputs": [
+      {
+        "internalType": "contract CheeseNFT",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "cnftPerBlock",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -223,19 +257,6 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "feeAddress",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -267,6 +288,32 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_pid",
+        "type": "uint256"
+      }
+    ],
+    "name": "migrate",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "migrator",
+    "outputs": [
+      {
+        "internalType": "contract IMigratorChef",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "owner",
     "outputs": [
@@ -274,32 +321,6 @@
         "internalType": "address",
         "name": "",
         "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "cnft",
-    "outputs": [
-      {
-        "internalType": "contract CnftYield",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "cnftPerBlock",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -340,7 +361,7 @@
     "name": "poolInfo",
     "outputs": [
       {
-        "internalType": "contract IHRC20",
+        "internalType": "contract IBEP20",
         "name": "lpToken",
         "type": "address"
       },
@@ -358,11 +379,6 @@
         "internalType": "uint256",
         "name": "accCnftPerShare",
         "type": "uint256"
-      },
-      {
-        "internalType": "uint16",
-        "name": "depositFeeBP",
-        "type": "uint16"
       }
     ],
     "stateMutability": "view",
@@ -401,11 +417,6 @@
         "type": "uint256"
       },
       {
-        "internalType": "uint16",
-        "name": "_depositFeeBP",
-        "type": "uint16"
-      },
-      {
         "internalType": "bool",
         "name": "_withUpdate",
         "type": "bool"
@@ -419,12 +430,12 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_feeAddress",
+        "internalType": "contract IMigratorChef",
+        "name": "_migrator",
         "type": "address"
       }
     ],
-    "name": "setFeeAddress",
+    "name": "setMigrator",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

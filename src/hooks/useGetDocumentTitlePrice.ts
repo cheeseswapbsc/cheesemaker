@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { usePriceCnftBusd } from 'state/hooks'
+import { usePriceCnftBnb } from 'state/hooks'
 
 const useGetDocumentTitlePrice = () => {
-  const cnftPriceUsd = usePriceCnftBusd()
+  const cnftPriceUsd = usePriceCnftBnb()
   useEffect(() => {
     document.title = `CheeseMaker - $${Number(cnftPriceUsd).toLocaleString(undefined, {
       minimumFractionDigits: 3,

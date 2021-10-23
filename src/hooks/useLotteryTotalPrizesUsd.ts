@@ -1,11 +1,11 @@
-import { usePriceCnftBusd } from 'state/hooks'
+import { usePriceCnftBnb } from 'state/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalRewards } from './useTickets'
 
 const useLotteryTotalPrizesUsd = () => {
   const totalRewards = useTotalRewards()
   const totalCnft = getBalanceNumber(totalRewards)
-  const cnftPriceBusd = usePriceCnftBusd()
+  const cnftPriceBusd = usePriceCnftBnb()
 
   return totalCnft * cnftPriceBusd.toNumber()
 }
