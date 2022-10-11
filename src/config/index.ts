@@ -7,6 +7,7 @@ BigNumber.config({
 
 export const CNFT_PER_BLOCK = new BigNumber(0.25)
 export const BLOCKS_PER_YEAR = new BigNumber(10512000)
+export const CNFT_PER_YEAR = new BigNumber(2628000)
 export const BSC_BLOCK_TIME = 3
 export const CNFT_POOL_PID = 4
 export const BASE_URL = 'https://cheesemaker.farm'

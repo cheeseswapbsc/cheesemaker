@@ -1,6 +1,6 @@
 import { Toast } from '@cheeseswapfinance/uikit'
 import BigNumber from 'bignumber.js'
-import { CampaignType, FarmConfig, Nft, PoolConfig, Team } from 'config/constants/types'
+import { CampaignType, FarmConfig, Nft, PoolConfig, Team, SerializedFarmConfig, } from 'config/constants/types'
 
 export type TranslatableText =
   | string
@@ -125,6 +125,32 @@ export interface PriceState {
 
 export interface Block {
   blockNumber: number
+}
+
+export type SerializedBigNumber = string
+
+interface SerializedFarmUserData {
+  allowance: string
+  tokenBalance: string
+  stakedBalance: string
+  earnings: string
+}
+
+export interface SerializedFarm extends SerializedFarmConfig {
+  tokenPriceBusd?: string
+  quoteTokenPriceBusd?: string
+  tokenAmountTotal?: SerializedBigNumber
+  lpTotalInQuoteToken?: SerializedBigNumber
+  lpTotalSupply?: SerializedBigNumber
+  tokenPriceVsQuote?: SerializedBigNumber
+  poolWeight?: SerializedBigNumber
+  userData?: SerializedFarmUserData
+}
+
+export interface SerializedFarmsState {
+  data: SerializedFarm[]
+  loadArchivedFarmsData: boolean
+  userDataLoaded: boolean
 }
 
 // Global state

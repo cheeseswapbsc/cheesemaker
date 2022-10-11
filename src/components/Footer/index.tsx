@@ -11,7 +11,7 @@ import DeployIPFS from '../../assets/svg/ipfs.svg'
 import Kp3rb from '../../assets/partners/KP3RB.png'
 import Pizza from '../../assets/partners/PIZZA.png'
 import Kiwi from '../../assets/partners/KIWI.png'
-import Bscid from '../../assets/partners/BSCID.png'
+import Hots from '../../assets/partners/HOTS.png'
 import Cmc from '../../assets/png/cmc.png'
 import Cg from '../../assets/png/cg.png'
 import DappRadar from '../../assets/png/dappradar.png'
@@ -215,13 +215,13 @@ export default function Footer() {
       Partners
       </Title>
       <FooterWrapper>
-        <StyledAbsoluteImg href="https://bscindex.com/" target="_blank" rel="noopener noreferrer">
-          <img src={Bscid} alt="BSC Index" height="48" width="48" />
+        <StyledAbsoluteImg href="https://hotswap.link/" target="_blank" rel="noopener noreferrer">
+          <img src={Hots} alt="Hots Mater" height="48" width="48" />
         </StyledAbsoluteImg>
-        <StyledAbsoluteImg href="https://kiwiswap.finance" target="_blank" rel="noopener noreferrer">
+        <StyledAbsoluteImg href="https://kiwifinance.co" target="_blank" rel="noopener noreferrer">
           <img src={Kiwi} alt="Kiwi Finance" height="48" width="48" />
         </StyledAbsoluteImg>
-        <StyledAbsoluteImg href="https://pizzafinance.app" target="_blank" rel="noopener noreferrer">
+        <StyledAbsoluteImg href="https://pizzaswap.network" target="_blank" rel="noopener noreferrer">
           <img src={Pizza} alt="Pizza Finance" height="48" width="48" />
         </StyledAbsoluteImg>
         <StyledAbsoluteImg href="https://keep3rb.network" target="_blank" rel="noopener noreferrer">

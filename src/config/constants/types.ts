@@ -2,6 +2,33 @@ import { TranslatableText } from 'state/types'
 
 export type IfoStatus = 'idle' | 'coming_soon' | 'live' | 'finished'
 
+
+    export interface SerializedToken {
+      chainId: number
+      address: string
+      decimals: number
+      symbol?: string
+      name?: string
+      projectLink?: string
+    }
+    interface FarmConfigBaseProps {
+    pid: number
+    lpSymbol: string
+    lpAddresses: Address
+    multiplier?: string
+    isCommunity?: boolean
+    dual?: {
+      rewardPerBlock: number
+      earnLabel: string
+      endBlock: number
+    }
+  }
+
+  export interface SerializedFarmConfig extends FarmConfigBaseProps {
+    token: SerializedToken
+    quoteToken: SerializedToken
+  }
+
 export interface Ifo {
   id: string
   isActive: boolean
